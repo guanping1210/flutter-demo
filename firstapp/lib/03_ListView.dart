@@ -52,15 +52,6 @@ class HomePage extends StatelessWidget {
                     TextStyle(color: Colors.black54, fontSize: subSize)),
             trailing: Image.network(image2)
           ),
-          ListTile(
-            leading: Image.network(image1),
-            title: Text('docker部署问题',
-                style: TextStyle(color: Colors.black54, fontSize: titleSize)),
-            subtitle: Text('docker部署问题，其实是这样的，我们在设计的时候',
-                style:
-                    TextStyle(color: Colors.black54, fontSize: subSize)),
-            trailing: Image.network(image2)
-          )
         ])));
   }
 }
