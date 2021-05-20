@@ -46,14 +46,12 @@ class HomeContent extends StatelessWidget {
     // 遍历构造数据
     for(var i = 0; i < 20; i ++) {
       list.add(
-        Container(
-          color: Colors.blueGrey,
-          alignment: Alignment.center,
-          child: ListTile(
-            title: Text('这是第$i个文本', style: TextStyle(color: Colors.white)),
-            subtitle: Text('guanping', style: TextStyle(color: Colors.white)),
-            leading: Image.network(url),
-          ) 
+        ListTile(
+          leading: Image.network(url),
+          title:
+              Text('我是第$i个列表', style: TextStyle(color: Colors.red, fontSize: 20)),
+          subtitle: Text('1111111'),
+          trailing: Image.network(url),
         ),
       );
     }
@@ -68,16 +66,10 @@ class HomeContent extends StatelessWidget {
    */
   List<Widget> getData3() {
     var tempList = listData.map((value){
-      return Container(
-        // color: Colors.blueGrey,
-
-        child: Column(
-          children: <Widget>[
-            Image.network(value['imageUrl']),
-            Text(value['title']),
-            Text(value['author'])
-          ]
-        ),
+      return ListTile(
+        title: Text(value['title']),
+        subtitle: Text(value['author']),
+        leading: Image.network(value['imageUrl'])
       );
     });
 
@@ -96,33 +88,39 @@ class HomeContent extends StatelessWidget {
     }
   }
 
+  List<Widget> getData4() {
+
+  }
+
   @override
   Widget build(BuildContext context) {
+    // 列表
+    // return ListView(
+    //   // children: this.getData(),
+    //   // children: this.getData2(),
+    //   children: this.getData3(),
+    //   padding: EdgeInsets.all(0),
+    // );
 
     // build渲染方法
-    return GridView.count(
-      // children: <Widget>[
-      //   Text('这是一个文本'),
-      //   Text('这是一个文本'),
-      //   Text('这是一个文本'),
-      //   Text('这是一个文本'),
-      //   Text('这是一个文本'),
-      //   Text('这是一个文本'),
-      //   Text('这是一个文本'),
-      //   Text('这是一个文本'),
-      //   Text('这是一个文本'),
-      //   Text('这是一个文本'),
-      //   Text('这是一个文本'),
-      //   Text('这是一个文本'),
-      // ],
+    return ListView.builder(
+      // itemCount: this.list.length,
+      // itemBuilder: (context, index) {
+      //   return ListTile(
+      //     title: Text(this.list[index])
+      //   );
+      // },
 
-      // children: this.getData2(),
-      
-      children: this.getData3(),
-      crossAxisCount: 3, // 显示的列数
-      crossAxisSpacing: 10.0, // 左右边距double类型
-      mainAxisSpacing: 10.0, // 上下边距double类型
-      padding: EdgeInsets.all(10),
+      // 渲染外部数据
+      itemCount: listData.length,
+      itemBuilder: (context, index) {
+        var temp = listData[index];
+        return ListTile(
+          title: Text(temp['title']),
+          subtitle: Text(temp['author']),
+          leading: Image.network(temp['imageUrl']),
+        );
+      }
     );
   }
 }
