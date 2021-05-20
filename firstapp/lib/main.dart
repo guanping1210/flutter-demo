@@ -74,9 +74,18 @@ class HomeContent extends StatelessWidget {
         child: Column(
           children: <Widget>[
             Image.network(value['imageUrl']),
+            SizedBox(height: 40), // 产生边距的事儿
             Text(value['title']),
             Text(value['author'])
-          ]
+          ],
+        ),
+
+        // 边框
+        decoration: BoxDecoration(
+          border: Border.all(
+            width: 1.0,
+            color: Colors.orange
+          )
         ),
       );
     });
