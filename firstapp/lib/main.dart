@@ -35,32 +35,55 @@ class HomePage extends StatelessWidget {
         body: Center(
             child: ListView(children: <Widget>[
           ListTile(
-            leading: Image.network(image1),
-            title: Text('前端小报系统开源',
-                style: TextStyle(color: Colors.black54, fontSize: titleSize)),
-            subtitle: Text('关于前端小报系统开源的问题，我们是这样考虑的',
-                style:
-                    TextStyle(color: Colors.black54, fontSize: subSize)),
-            trailing: Image.network(image2)
-          ),
+              leading: Image.network(image1),
+              title: Text('前端小报系统开源',
+                  style: TextStyle(color: Colors.black54, fontSize: titleSize)),
+              subtitle: Text('关于前端小报系统开源的问题，我们是这样考虑的',
+                  style: TextStyle(color: Colors.black54, fontSize: subSize)),
+              trailing: Image.network(image2)),
           ListTile(
-            leading: Image.network(image1),
-            title: Text('添加一个组件',
-                style: TextStyle(color: Colors.black54, fontSize: titleSize)),
-            subtitle: Text('关于添加一个组件开源的问题，我们是这样考虑的',
-                style:
-                    TextStyle(color: Colors.black54, fontSize: subSize)),
-            trailing: Image.network(image2)
-          ),
+              leading: Image.network(image1),
+              title: Text('添加一个组件',
+                  style: TextStyle(color: Colors.black54, fontSize: titleSize)),
+              subtitle: Text('关于添加一个组件开源的问题，我们是这样考虑的',
+                  style: TextStyle(color: Colors.black54, fontSize: subSize)),
+              trailing: Image.network(image2)),
           ListTile(
-            leading: Image.network(image1),
-            title: Text('docker部署问题',
-                style: TextStyle(color: Colors.black54, fontSize: titleSize)),
-            subtitle: Text('docker部署问题，其实是这样的，我们在设计的时候',
-                style:
-                    TextStyle(color: Colors.black54, fontSize: subSize)),
-            trailing: Image.network(image2)
-          )
+              leading: Image.network(image1),
+              title: Text('docker部署问题',
+                  style: TextStyle(color: Colors.black54, fontSize: titleSize)),
+              subtitle: Text('docker部署问题，其实是这样的，我们在设计的时候',
+                  style: TextStyle(color: Colors.black54, fontSize: subSize)),
+              trailing: Image.network(image2)),
+          // 点击文字进入下一个页面
+          ListTile(
+              leading: Image.network(image1),
+              title: FlatButton(
+                onPressed: () => {
+                  Navigator.push(context, MaterialPageRoute(builder: (content) {
+                    return NewRoute();
+                  }))
+                },
+                child: Text('docker部署问题',
+                    style:
+                        TextStyle(color: Colors.black54, fontSize: titleSize)),
+              ),
+              subtitle: Text('docker部署问题，其实是这样的，我们在设计的时候',
+                  style: TextStyle(color: Colors.black54, fontSize: subSize)),
+              trailing: Image.network(image2))
         ])));
+  }
+}
+
+// 新的路由页面
+class NewRoute extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+        appBar: AppBar(
+          title: Text('new route'),
+        ),
+        body: Center(child: Text('this is new route')));
   }
 }
