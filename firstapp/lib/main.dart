@@ -1,89 +1,81 @@
 import 'package:flutter/material.dart';
+import 'dart:io';
+import 'dart:convert';
 
-void main() {
-  runApp(MyApp());
+// 网络请求
+getMusicData() async {
+  var httpClient = new HttpClient();
+  var url = new Uri.http('api.66mz8.com', '/api/rand.music.163.php');
+  // var url = 'https://api.66mz8.com/api/rand.music.163.php?format=json';
+  var request = await httpClient.getUrl(url);
+  var response = await request.close();
+  var responseBody = await response.transform(Utf8Decoder());
+  print('1111$responseBody');
 }
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-        title: 'template',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: HomePage());
-  }
+var httpClient = new HttpClient();
+
+void main() {
+  runApp(HomePage());
 }
 
 class HomePage extends StatelessWidget {
-  final titleSize = 16.0, subSize = 12.0;
-  final titleColor = 'black', subColor = 'black54';
-
-  final image1 =
-      'https://img.alicdn.com/imgextra/i1/6000000006577/O1CN01zfi5dc1ySJbVW4IDM_!!6000000006577-2-octopus.png';
-  final image2 =
-      'https://img.alicdn.com/imgextra/i4/2206686532409/O1CN011gHVP31TfMnUKtgdy_!!2206686532409-0-lubanimage.jpg';
-
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Scaffold(
-        appBar: AppBar(
-          title: Text('template'),
-        ),
-        body: Center(
-            child: ListView(children: <Widget>[
-          ListTile(
-              leading: Image.network(image1),
-              title: Text('前端小报系统开源',
-                  style: TextStyle(color: Colors.black54, fontSize: titleSize)),
-              subtitle: Text('关于前端小报系统开源的问题，我们是这样考虑的',
-                  style: TextStyle(color: Colors.black54, fontSize: subSize)),
-              trailing: Image.network(image2)),
-          ListTile(
-              leading: Image.network(image1),
-              title: Text('添加一个组件',
-                  style: TextStyle(color: Colors.black54, fontSize: titleSize)),
-              subtitle: Text('关于添加一个组件开源的问题，我们是这样考虑的',
-                  style: TextStyle(color: Colors.black54, fontSize: subSize)),
-              trailing: Image.network(image2)),
-          ListTile(
-              leading: Image.network(image1),
-              title: Text('docker部署问题',
-                  style: TextStyle(color: Colors.black54, fontSize: titleSize)),
-              subtitle: Text('docker部署问题，其实是这样的，我们在设计的时候',
-                  style: TextStyle(color: Colors.black54, fontSize: subSize)),
-              trailing: Image.network(image2)),
-          // 点击文字进入下一个页面
-          ListTile(
-              leading: Image.network(image1),
-              title: FlatButton(
-                onPressed: () => {
-                  Navigator.push(context, MaterialPageRoute(builder: (content) {
-                    return NewRoute();
-                  }))
-                },
-                child: Text('docker部署问题',
-                    style:
-                        TextStyle(color: Colors.black54, fontSize: titleSize)),
-              ),
-              subtitle: Text('docker部署问题，其实是这样的，我们在设计的时候',
-                  style: TextStyle(color: Colors.black54, fontSize: subSize)),
-              trailing: Image.network(image2))
-        ])));
+    return MaterialApp(title: 'music app', home: MyHomePage());
   }
 }
 
-// 新的路由页面
-class NewRoute extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
+  MyHomePage({Key key}) : super(key: key);
+
+  PageContainer createState() => new PageContainer();
+}
+
+class PageContainer extends State {
+  var _ipAddress = 'Unknown';
+
+  _getIPAddress() async {
+    var url = 'https://httpbin.org/ip';
+    var httpClient = new HttpClient();
+    String result;
+    try {
+      var request = await httpClient.getUrl(Uri.parse(url));
+      var response = await request.close();
+      if (response.statusCode == HttpStatus.OK) {
+        var json = await response.transform(utf8.decoder).join();
+        var data = jsonDecode(json);
+        result = data['origin'];
+      } else {
+        result =
+            'Error getting IP address:\nHttp status ${response.statusCode}';
+      }
+    } catch (exception) {
+      result = 'Failed getting IP address';
+    }
+
+    // If the widget was removed from the tree while the message was in flight,
+    // we want to discard the reply rather than calling setState to update our
+    // non-existent appearance.
+    if (!mounted) return;
+    print(result);
+    setState(() {
+      _ipAddress = result;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    // getMusicData();
     // TODO: implement build
     return Scaffold(
-        appBar: AppBar(
-          title: Text('new route'),
-        ),
-        body: Center(child: Text('this is new route')));
+        appBar: AppBar(title: Text('music app')),
+        body: Container(
+          child: new Column(children: <Widget>[
+            Text('test'),
+            RaisedButton(onPressed: _getIPAddress, child: Text('获取接口数据'))
+          ]),
+        ));
   }
 }
