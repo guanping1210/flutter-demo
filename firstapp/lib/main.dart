@@ -15,6 +15,9 @@ getMusicData() async {
 
 var httpClient = new HttpClient();
 
+final url =
+    'https://img.alicdn.com/imgextra/i3/2206686532409/O1CN01CNYxyS1TfMndKWG5H_!!2206686532409-0-lubanimage.jpg';
+// 入口方法
 void main() {
   runApp(HomePage());
 }
@@ -79,3 +82,9 @@ class PageContainer extends State {
         ));
   }
 }
+
+/**
+ * 列表 ListView:
+ *  接收数组，接收任意Widget;
+ *  可以指定列表滚动方向：垂直或水平
+ */
