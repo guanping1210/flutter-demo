@@ -6,13 +6,13 @@
 
 #### Text 文字
 
-#### Scaffold 基础的布局，包含appBar、body、bottomNavigationBar
+#### Scaffold 基础的布局，包含 appBar、body、bottomNavigationBar
 
 #### MaterialApp 基础的布局组件
 
 #### Image 图片加载
 
-#### Container 类似于div，可以创建容器
+#### Container 类似于 div，可以创建容器
 
 #### Column 行布局
 
@@ -23,3 +23,5 @@
 #### StatelessWidet 无状态组件
 
 #### StatefulWidget 有状态组件
+
+#### GestureDetector 包裹文本，提供 onTap 点击事件
