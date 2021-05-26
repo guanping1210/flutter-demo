@@ -11,7 +11,6 @@ class GoodDetail extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-    print(this.goodId);
     // TODO: implement createState
     return _GoodDetail(id: this.goodId);
   }
@@ -26,8 +25,6 @@ class _GoodDetail extends State {
 
   getGoodDetail() async {
     var res = await get('/goods/$id');
-    print(res['data']);
-
     setState(() {
       goods = res['data'];
     });
@@ -58,45 +55,45 @@ class _GoodDetail extends State {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    print('ssssss jjjjj ${this.goods}');
     return Scaffold(
-        appBar: AppBar(
-          title: Text('商品详情页'),
-        ),
-        body: Container(
-            padding: EdgeInsets.all(10),
-            // color: Colors.blue,  // 背景色
-            child: Column(
-              children: <Widget>[
-                Image.network(goods['img']),
-                Container(
-                  width: double.infinity, // 满屏占满
-                  color: Color.fromARGB(10, 10, 10, 3),
-                  child: Column(
-                      children: [Text(goods['title']), Text(goods['desc'])]),
+      appBar: AppBar(
+        title: Text('商品详情页'),
+      ),
+      body: Container(
+        padding: EdgeInsets.all(10),
+        // color: Colors.blue,  // 背景色
+        child: Column(
+          children: <Widget>[
+            Image.network(goods['img']),
+            Container(
+              width: double.infinity, // 满屏占满
+              color: Color.fromARGB(10, 10, 10, 3),
+              child: Column(
+                  children: [Text(goods['title']), Text(goods['desc'])]),
+            ),
+            Row(
+              textDirection: TextDirection.rtl,
+              children: [
+                GestureDetector(
+                  child: Icon(Icons.add_circle_outline, color: Colors.red),
+                  onTap: () {
+                    addGood(1);
+                  },
                 ),
-                Row(
-                  textDirection: TextDirection.rtl,
-                  children: [
-                    GestureDetector(
-                      child: Icon(Icons.add_circle_outline, color: Colors.red),
-                      onTap: () {
-                        addGood(1);
-                      },
-                    ),
-                                        Padding(padding: EdgeInsets.all(5)),
-
-                    Text('$count'),
-                    Padding(padding: EdgeInsets.all(5)),
-              GestureDetector(
-                        child: Icon(Icons.remove_circle_outline,
-                            color: Colors.red),
-                        onTap: () {
-                          removeGood(1);
-                        }),
-                  ],
-                )
+                Padding(padding: EdgeInsets.all(5)),
+                Text('$count'),
+                Padding(padding: EdgeInsets.all(5)),
+                GestureDetector(
+                  child: Icon(Icons.remove_circle_outline,
+                      color: Colors.red),
+                  onTap: () {
+                    removeGood(1);
+                  }),
               ],
-            )));
+            )
+          ],
+        )
+      )
+    );
   }
 }

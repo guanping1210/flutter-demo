@@ -47,7 +47,6 @@ class _HomePage extends State {
             return Container(
                 child: GestureDetector(
                     onTap: () {
-                      print('文本点击事件');
                       // 路由跳转  这种方式是新起一个全新的页面
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
