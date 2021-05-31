@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import './SnackBar.dart';
+import './WidgetState.dart';
 
 void main() {
   runApp(HomePage());
@@ -13,6 +15,8 @@ class HomePage extends StatelessWidget {
       // 命名路由, 注册路由表
       initialRoute: '/', // 指定默认路由
       routes: {
+        'state': (context) => WidgetState(),
+        'snacker': (context) => SnackPage(),
         "new_page2": (context) => NewRoute(),
         "new_page": (context) => NewRoute(),
         '/': (context) => CountPage(title: 'count app'),
@@ -50,22 +54,38 @@ class Count extends State<CountPage> {
         child: Column(
           children: [
             SizedBox(
-              height: 60,
+              height: 10,
             ),
             Text('$countNum', style: TextStyle(color: Colors.redAccent, fontSize: 24)),
             RaisedButton(
-              child: Text('打开新页面new page 111', style: TextStyle(color: Colors.blue)),
+              child: Text('1、打开新页面new page 111, 并且携带参数', style: TextStyle(color: Colors.blue)),
               onPressed: () {
                 // 跳转到第一个路由, 并且可以带参数
                 Navigator.pushNamed(context, 'new_page', arguments: { "hello": 'hi', "title": '3' });
               },
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 10),
             RaisedButton(
-              child: Text('打开新页面new page 222', style: TextStyle(color: Colors.blue)),
+              child: Text('2、打开新页面new page 222', style: TextStyle(color: Colors.blue)),
               onPressed: () {
                 // 跳转到第二个页面
                 Navigator.pushNamed(context, 'new_page2');
+              },
+            ),
+            SizedBox(height: 10),
+            RaisedButton(
+              child: Text('3、跳转去新的snack页面', style: TextStyle(color: Colors.blue)),
+              onPressed: () {
+                // 跳转到第二个页面
+                Navigator.pushNamed(context, 'snacker');
+              },
+            ),
+            SizedBox(height: 10),
+            RaisedButton(
+              child: Text('4、跳转去新的状态管理页面', style: TextStyle(color: Colors.blue)),
+              onPressed: () {
+                // 跳转到第二个页面
+                Navigator.pushNamed(context, 'state');
               },
             ),
           ],

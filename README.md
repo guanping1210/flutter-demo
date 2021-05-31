@@ -1,6 +1,8 @@
 #### 组件概览
 
-#### 基本 widgets
+#### 基本 widgets: 可以是UI组件、控件、或者功能性组件
+- widget 是UI元素的一个配置数据，一个widget可以对应多个Element
+- 真正的UI是由Element构成的，但是Element是通过widget生成的
 
 1、Container 类似于 div，可以调整定位、布局、大小
 2、Row 水平方向排列子widget的列表
@@ -123,3 +125,23 @@ FittedBox
 4、Dismissible 拖动时可隐藏的widget
 5、Navigator 导航器，可以在多个页面直接实现路由跳转
 6、Scrollable 可滚动的widget的交互模型
+
+
+#### state 生命周期： 联想到react的生命周期，会好理解一些
+- initState 当widget第一次插入到widget树中时会调用，初始化state状态值， 只会调用一次
+- dependOnInheriteWidgetOfExactType 获取最近父级的InheritFromWidget时调用，，因为可能会产生变化（一般在didChangeDependencies中调用）
+- didChangeDependencies 当state对象的依赖发生变化时调用
+- build 用于构建widget子树,在以下场景中被调用
+  - initState 之后
+  - didUpdateWidget 之后
+  - setState 之后
+  - didChangeDependencies 之后
+  - 移除 state 之后
+- reassemble 开发调试函数，在热加载时会用到
+- didUpdateWidgt widget重建时调用
+- deactivate 移除state对象时，会调用此函数
+- dispose 永久移除state对象，释放资源
+
+
+#### 在widget树中获取state对象
+- 通过context获取， context.findAncestorStateOfType, 可以向上查找指定类型的statefulWidget对应的state对象
