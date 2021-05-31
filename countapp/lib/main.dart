@@ -47,7 +47,7 @@ class Count extends State<CountPage> {
                 style: TextStyle(color: Colors.redAccent, fontSize: 24)),
           ),
           NewRouteButton(),
-          
+          TipRoute()
         ],
       ),
       floatingActionButton: FloatingActionButton(
