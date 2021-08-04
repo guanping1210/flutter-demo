@@ -1,6 +1,6 @@
 // https://www.cnblogs.com/crazycode2/p/11220203.html
 import 'package:flutter/material.dart';
-import './index_page.dart';
+// import './index_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,7 +16,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: new IndexPage(),
+      // home: new IndexPage(),
+      home: Text('4444')
     ));
   }
 }
