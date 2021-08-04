@@ -45,4 +45,8 @@ void main() {
   var list2 = <String>['1', '2'];
   list2.add('3');
   print(list2);
+
+  // 4.3 创建集合的方式
+  var list3 = List.filled(10, 10);
+  print(list3);
 }
