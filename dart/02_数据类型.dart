@@ -78,8 +78,6 @@ void main() {
   people = 'hello world';
 
   print(people);
-
-  // 8、assert 断言，判断是否相等
   assert(people == 'hello world');
   print(people is String);
 }

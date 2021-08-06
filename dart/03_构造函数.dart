@@ -68,6 +68,9 @@ void main() {
 
   // 打印log值
   print(loggerJSON.name);
+
+  // say log
+  say('guap', 'nice to meet u');
 }
 
 // 定义枚举类型
@@ -77,4 +80,9 @@ enum Color { red, green, blue }
 abstract class Cache<T> {
   T getByKey(String key);
   void setByKey(String key, T value);
+}
+
+// 可选命名参数
+void say(String name, String word, [String? device]) {
+  print('$name, $word, $device');
 }
