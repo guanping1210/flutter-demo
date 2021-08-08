@@ -211,5 +211,11 @@ FittedBox
   30、平常团队直接有没有相互代码codeview，具体view 的点是哪些呢？
   31、restful规范，能说一下你的理解吗？
   32、现在混合开发、前端的移动开发，都离不开JSBridge,他是用来沟通原生和web的嘛，具体JSBridge的原理，有没有了解过呢？
-  
+
+
+  33、Node.js 中的 Event Emitter 是怎么理解的
+  34、NodeJS中事件循环是什么，如何工作？和 JS 中的事件循环有什么区别呢？
+
+  38、有没有编写过node命令，CLI这些？
+  39、代码规范，eslint，这些？
  -->
