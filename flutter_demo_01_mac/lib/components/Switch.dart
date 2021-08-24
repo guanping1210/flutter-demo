@@ -3,6 +3,7 @@
  */
 
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class CustomSwitch extends StatefulWidget {
   CustomSwitchState createState() => new CustomSwitchState();
@@ -14,7 +15,9 @@ class CustomSwitchState extends State<CustomSwitch> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: <Widget>[
+    return Scaffold(
+      body: Column(children: <Widget>[
+      Text('ppppp'),
       Switch(
           value: switchSelected,
           onChanged: (value) {
@@ -32,6 +35,8 @@ class CustomSwitchState extends State<CustomSwitch> {
               checkboxSelected = value;
             });
           })
-    ]);
+    ])
+    );
+  
   }
 }

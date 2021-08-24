@@ -219,3 +219,7 @@ FittedBox
   38、有没有编写过node命令，CLI这些？
   39、代码规范，eslint，这些？
  -->
+
+ ### 使用Material风格的其他小组件，必须包裹在Scaffold内部，否则会报错
+
+ ## 本地资源，存放的根目录，是和 lib 同等级的目录，assets 才能有效

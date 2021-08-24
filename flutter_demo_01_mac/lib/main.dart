@@ -10,6 +10,7 @@ import './components//demo1.dart';
 import './components//demo2.dart';
 import './components//demo3.dart';
 import './components/Image.dart';
+import './components/Switch.dart';
 
 // 主函数
 void main() {
@@ -35,13 +36,14 @@ class MyApp extends StatelessWidget {
           "demo1": (context) => Demo1(),
           "demo2": (context) => Demo2(),
           "demo3": (context) => Demo3(),
+          "switch": (context) => CustomSwitch(),
           // 注册首页路由
           "/": (context) => new MyHomePage(title: 'new route home page'),
         },
         // 该方法可以检测路由，在新路由打开之前可以执行一系列操作，例如用户菜单权限控制
         onGenerateRoute: (RouteSettings settings) {
-          return MaterialPageRoute(build: (conext) {
-            String routeName = setting.name;
+          return MaterialPageRoute(builder: (conext) {
+            String routeName = settings.name;
             // ...
           });
         });
@@ -114,7 +116,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     // Navigator.pushName(context, 'new_page');
 
                     // 打开路由时可以传递参数
-                    Navigator.of(context).pushName('new_pahe', '', 'hi');
+                    Navigator.of(context).pushNamed('switch');
                   }),
             ]),
       ),
@@ -136,7 +138,7 @@ class OpenDemoPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RaisedButton(child: Text(text));
+    return RaisedButton(child: Text(title));
   }
 }
 
