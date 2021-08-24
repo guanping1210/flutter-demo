@@ -11,6 +11,7 @@ import './components//demo2.dart';
 import './components//demo3.dart';
 import './components/Image.dart';
 import './components/Switch.dart';
+import './components/Form.dart';
 
 // 主函数
 void main() {
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
           "demo2": (context) => Demo2(),
           "demo3": (context) => Demo3(),
           "switch": (context) => CustomSwitch(),
+          'form': (context) => CustomForm(),
           // 注册首页路由
           "/": (context) => new MyHomePage(title: 'new route home page'),
         },
@@ -116,7 +118,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     // Navigator.pushName(context, 'new_page');
 
                     // 打开路由时可以传递参数
-                    Navigator.of(context).pushNamed('switch');
+                    Navigator.of(context).pushNamed('form');
                   }),
             ]),
       ),

@@ -27,7 +27,8 @@ class CustomFormState extends State<CustomForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
+    return Scaffold(
+      body: Form(
         key: formKey, // 设置globalkey，方便后去获取FormState
         autovalidate: true, // 开启自动校验
         child: Column(
@@ -94,6 +95,7 @@ class CustomFormState extends State<CustomForm> {
               });
             }))
           ],
-        ));
+        ))
+    );
   }
 }
