@@ -9,6 +9,7 @@ import './route.dart';
 import './components//demo1.dart';
 import './components//demo2.dart';
 import './components//demo3.dart';
+import './components/Image.dart';
 
 // 主函数
 void main() {
@@ -93,6 +94,9 @@ class _MyHomePageState extends State<MyHomePage> {
               new Text('一共点击的次数：'),
               new Text('$_counter',
                   style: Theme.of(context).textTheme.headline4),
+
+              // 自定义图片
+              CustomImg(),
               // 添加一个新的按钮，点击可以跳转去新的页面
               FlatButton(
                   child: Text('打开新页面'),
