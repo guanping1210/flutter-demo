@@ -4,12 +4,32 @@
 import 'package:flutter/material.dart';
 
 class CustomLinearProgress extends StatefulWidget {
-  CustomLinearPrigressState createState() => new CustomLinearPrigressState();
+  CustomLinearProgressState createState() => new CustomLinearProgressState();
 }
 
-class CustomLinearPrigressState extends State<CustomLinearProgress> {
+class CustomLinearProgressState extends State<CustomLinearProgress>
+    with SingleTickerProviderStateMixin {
+  // 定义控制器
+  AnimationController processController;
+
   @override
   Widget build(BuildContext context) {
-    return Text('222');
+    return Scaffold(
+      body: Column(
+        children: <Widget>[
+          // 长条形的进度条
+          LinearProgressIndicator(
+            backgroundColor: Colors.grey[200],
+            valueColor: AlwaysStoppedAnimation(Colors.blue),
+            value: .5,
+          ),
+          // 圆形的进度条
+          CircularProgressIndicator(
+            backgroundColor: Colors.grey[200],
+            valueColor: AlwaysStoppedAnimation(Colors.blue),
+          )
+        ],
+      )
+    );
   }
 }
